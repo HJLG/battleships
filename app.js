@@ -14,7 +14,8 @@ const game = {
     ],
   },
 
-  counter: 0,
+  counter1: 0,
+  counter2: 0,
 };
 
 const render = () => {
@@ -22,17 +23,17 @@ const render = () => {
     for (let j = 0; j < game.boards.board1[i].length; j++) {
       if (game.boards.board1[i][j] === 1) {
         $(`#${i}${j}`).css({
-            background: "url(/images/ship.jpeg)",
-            "background-size": "100% 100%",
-            "background-repeat": "no-repeat",
-          });
+          background: "url(/images/ship.jpeg)",
+          "background-size": "100% 100%",
+          "background-repeat": "no-repeat",
+        });
       }
       if (game.boards.board1[i][j] < 0) {
         $(`#${i}${j}`).css({
-            background: "url(/images/splash.jpeg)",
-            "background-size": "100% 100%",
-            "background-repeat": "no-repeat",
-          });
+          background: "url(/images/splash.jpeg)",
+          "background-size": "100% 100%",
+          "background-repeat": "no-repeat",
+        });
       }
     }
   }
@@ -48,15 +49,14 @@ const render2 = () => {
       }
       if (game.boards.board2[k][p] < 0) {
         $(`#0${k}${p}`).css({
-            background: "url(/images/splash.jpeg)",
-            "background-size": "100% 100%",
-            "background-repeat": "no-repeat",
-          });
+          background: "url(/images/splash.jpeg)",
+          "background-size": "100% 100%",
+          "background-repeat": "no-repeat",
+        });
       }
     }
   }
 };
-console.log(game.boards.board1.length);
 
 const main = () => {
   //   console.log("loaded");
@@ -96,6 +96,11 @@ const main = () => {
     const getRow = $(event.currentTarget).attr("row");
     const getCol = $(event.currentTarget).attr("col");
     game.boards.board1[getRow][getCol] = game.boards.board1[getRow][getCol] - 1;
+    if (game.boards.board1[getRow][getCol] === 1) {
+      game.counter1 += 1;
+      console.log("game counter 1", game.counter1);
+    }
+    setTimeout(gameOver);
     render();
     render2();
   };
@@ -104,10 +109,22 @@ const main = () => {
     const getRow = $(event.currentTarget).attr("row");
     const getCol = $(event.currentTarget).attr("col");
     game.boards.board2[getRow][getCol] = game.boards.board2[getRow][getCol] - 1;
+    if (game.boards.board2[getRow][getCol] === 1) {
+      game.counter2 += 1;
+      console.log("game counter 1", game.counter2);
+    }
+    setTimeout(gameOver);
     render();
     render2();
   };
 
+  const gameOver = () => {
+    if (game.counter1 === 4) {
+      alert("player 1 win");
+    } else if (game.counter2 === 4) {
+      alert("player 2 win");
+    }
+  };
   $(".square").on("click", changeValue);
   $(".square2").on("click", changeValue2);
 };
