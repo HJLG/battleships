@@ -21,7 +21,10 @@ const render = () => {
   for (let i = 0; i < game.boards.board1.length; i++) {
     for (let j = 0; j < game.boards.board1[i].length; j++) {
       if (game.boards.board1[i][j] === 1) {
-        $(`#${i}${j}`).css("background-color", "black");
+        $(`#${i}${j}`).css("background-color", "red");
+      }
+      if (game.boards.board1[i][j] < 0) {
+        $(`#${i}${j}`).css("background-color", "white");
       }
     }
   }
@@ -30,7 +33,10 @@ const render2 = () => {
   for (let k = 0; k < game.boards.board2.length; k++) {
     for (let p = 0; p < game.boards.board2[k].length; p++) {
       if (game.boards.board2[k][p] === 1) {
-        $(`#0${k}${p}`).css("background-color", "black");
+        $(`#0${k}${p}`).css("background-color", "red");
+      }
+      if (game.boards.board2[k][p] < 0) {
+        $(`#0${k}${p}`).css("background-color", "white");
       }
     }
   }
@@ -74,9 +80,7 @@ const main = () => {
   const changeValue = (event) => {
     const getRow = $(event.currentTarget).attr("row");
     const getCol = $(event.currentTarget).attr("col");
-
     game.boards.board1[getRow][getCol] = game.boards.board1[getRow][getCol] - 1;
-
     render();
     render2();
   };
