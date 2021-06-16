@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+
+.game {
+    display:inline-flex;
+    flex-direction:row;
+    border : 1px solid;
+    background-color:lightgreen;
+    
+} 
+
+.board1 {
+    position:relative;
+    margin: auto;
+    padding: 100px;
+    background-color: aqua;
+}
+
+.board2 {
+    position: relative;
+    margin: auto;
+    padding: 100px;
+    background-color: brown;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.square {
+    border: 1px solid;
+    height: 40px;
+    width: 40px;
+}
+.square2 {
+    border: 1px solid;
+    height: 40px;
+    width: 40px;
+}
