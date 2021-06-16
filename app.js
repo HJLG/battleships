@@ -21,10 +21,18 @@ const render = () => {
   for (let i = 0; i < game.boards.board1.length; i++) {
     for (let j = 0; j < game.boards.board1[i].length; j++) {
       if (game.boards.board1[i][j] === 1) {
-        $(`#${i}${j}`).css("background-color", "red");
+        $(`#${i}${j}`).css({
+            background: "url(/images/ship.jpeg)",
+            "background-size": "100% 100%",
+            "background-repeat": "no-repeat",
+          });
       }
       if (game.boards.board1[i][j] < 0) {
-        $(`#${i}${j}`).css("background-color", "white");
+        $(`#${i}${j}`).css({
+            background: "url(/images/splash.jpeg)",
+            "background-size": "100% 100%",
+            "background-repeat": "no-repeat",
+          });
       }
     }
   }
@@ -33,10 +41,17 @@ const render2 = () => {
   for (let k = 0; k < game.boards.board2.length; k++) {
     for (let p = 0; p < game.boards.board2[k].length; p++) {
       if (game.boards.board2[k][p] === 1) {
-        $(`#0${k}${p}`).css("background-color", "red");
+        $(`#0${k}${p}`).css({
+          background: "url(/images/ship.jpeg)",
+          "background-size": "contain",
+        });
       }
       if (game.boards.board2[k][p] < 0) {
-        $(`#0${k}${p}`).css("background-color", "white");
+        $(`#0${k}${p}`).css({
+            background: "url(/images/splash.jpeg)",
+            "background-size": "100% 100%",
+            "background-repeat": "no-repeat",
+          });
       }
     }
   }
