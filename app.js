@@ -17,6 +17,11 @@ const game = {
   counter1: 0,
   counter2: 0,
 };
+
+const reset = () => {
+  $("#reset").click(() => location.reload());
+};
+
 let turn = 1;
 
 const playerTurn = () => {
@@ -112,48 +117,51 @@ const main = () => {
     }
   }
   const changeValue = (event) => {
-    if(turn === 1){
-    const getRow = $(event.currentTarget).attr("row");
-    const getCol = $(event.currentTarget).attr("col");
-    game.boards.board1[getRow][getCol] = game.boards.board1[getRow][getCol] - 1;
-    if (game.boards.board1[getRow][getCol] === 1) {
-      game.counter1 += 1;
+    if (turn === 1) {
+      const getRow = $(event.currentTarget).attr("row");
+      const getCol = $(event.currentTarget).attr("col");
+      game.boards.board1[getRow][getCol] =
+        game.boards.board1[getRow][getCol] - 1;
+      if (game.boards.board1[getRow][getCol] === 1) {
+        game.counter1 += 1;
+      }
+      playerTurn();
+      // $(".square").off("click");
+      // $(".square2").on("click",changeValue2);
+      setTimeout(gameOver);
+      render();
+      render2();
     }
-    playerTurn()
-    // $(".square").off("click");
-    // $(".square2").on("click",changeValue2);
-    setTimeout(gameOver);
-    render();
-    render2();}
   };
 
   const changeValue2 = (event) => {
-    if(turn === 2){
-    const getRow = $(event.currentTarget).attr("row");
-    const getCol = $(event.currentTarget).attr("col");
-    game.boards.board2[getRow][getCol] = game.boards.board2[getRow][getCol] - 1;
-    if (game.boards.board2[getRow][getCol] === 1) {
-      game.counter2 += 1;
+    if (turn === 2) {
+      const getRow = $(event.currentTarget).attr("row");
+      const getCol = $(event.currentTarget).attr("col");
+      game.boards.board2[getRow][getCol] =
+        game.boards.board2[getRow][getCol] - 1;
+      if (game.boards.board2[getRow][getCol] === 1) {
+        game.counter2 += 1;
+      }
+      playerTurn();
+      // $(".square2").off("click");
+      // $(".square").on("click", changeValue);
+      setTimeout(gameOver);
+      render();
+      render2();
     }
-    playerTurn()
-    // $(".square2").off("click");
-    // $(".square").on("click", changeValue);
-    setTimeout(gameOver);
-    render();
-    render2();
-  }
   };
 
   const gameOver = () => {
     if (game.counter1 === 4) {
-      alert("player 2 win");
-    } else if (game.counter2 === 4) {
       alert("player 1 win");
+    } else if (game.counter2 === 4) {
+      alert("player 2 win");
     }
   };
   $(".square").on("click", changeValue);
   $(".square2").on("click", changeValue2);
+  reset()
 };
-
 
 $(main);
