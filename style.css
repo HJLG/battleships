@@ -1,45 +1,44 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-    background-color: grey;
+  background-color: grey;
 }
 
 .game {
-    display:inline-flex;
-    flex-direction:row;
-    border: 1px solid;
-    margin: 0 auto;
-} 
+  display: inline-flex;
+  flex-direction: row-reverse;
+  border: 1px solid;
+  margin: 0 auto;
+}
 
 .board1 {
-    position:relative;
-    margin: 100px;
-    background-color: darkblue;
+  position: relative;
+  margin: 100px;
+  background-color: darkblue;
 }
 
 .board2 {
-    position: relative;
-    margin: 100px;
-    background-color: maroon;
+  position: relative;
+  margin: 100px;
+  background-color: maroon;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
-    
+  display: flex;
+  flex-direction: row;
 }
 
 .square {
-    border: 1px solid;
-    height: 40px;
-    width: 40px;
+  border: 1px solid;
+  height: 40px;
+  width: 40px;
 }
 .square2 {
-    border: 1px solid;
-    height: 40px;
-    width: 40px;
+  border: 1px solid;
+  height: 40px;
+  width: 40px;
 }
